@@ -1,6 +1,5 @@
 tqdm
 gdown
 opencv-contrib-python-headless
-numpy
-matplotlib<3.4
+matplotlib
 easydict
