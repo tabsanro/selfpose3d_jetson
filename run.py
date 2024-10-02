@@ -193,7 +193,7 @@ def main():
     )
 
     # Inference
-    for origin_frames, transed_frames, meta in (pbar := tqdm(data_loader)):
+    for origin_frames, transed_frames, meta in tqdm(data_loader):
         # Update distance
         distance = None
         

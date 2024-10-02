@@ -3,3 +3,4 @@ gdown
 opencv-contrib-python-headless==4.5.5.64
 matplotlib
 easydict
+PyYAML

@@ -112,14 +112,14 @@ class Camera:
 
         '''
         sources = []
-        for camera_idx in (camera_pbar := tqdm(range(max_cameras), desc="Finding cameras", unit="cameras")):
+        for camera_idx in tqdm(range(max_cameras), desc="Finding cameras", unit="cameras"):
             if len(sources) == self.num_sources:
                 camera_pbar.update(max_cameras-camera_idx)
                 camera_pbar.close()
                 break
             cap = cv2.VideoCapture(camera_idx)
             if cap.isOpened():
-                for frame_idx in (frame_pbar := tqdm(range(10), desc=f"Checking camera {camera_idx}", unit="frames", leave=False)):
+                for frame_idx in tqdm(range(10), desc=f"Checking camera {camera_idx}", unit="frames", leave=False):
                     ret, frame = cap.read()
                     if not ret:
                         frame_pbar.update(10-frame_idx)
