@@ -1,0 +1,66 @@
+NUM_SOURCES: 4
+# NUM_SOURCES: 3
+WEBCAM: False
+SOURCE_FOLDER_NAME: ~
+# SOURCE_FOLDER_NAME: "240828_1517"
+
+# MIVOLO should be the opposite of KAFKA.ANALYTICS
+MIVOLO: True
+MIVOLO_TRACK: True
+MAIN: False
+
+# models
+MODEL:
+  POSENET:
+    CKPT: "modules/SelfPose3d/models/POC_posenet.pth.tar"
+    TENSORRT: False
+    INPUT_SHAPE: [1, 3, 512, 960]
+  MIVOLO:
+    CKPT: "modules/mivolo/models/model_imdb_cross_person_4.22_99.46.pth.tar"
+    TENSORRT: False
+    INPUT_SHAPE: ~
+  YOLO:
+    CKPT: "modules/mivolo/models/yolov8x_person_face.engine"
+    TENSORRT: False
+    INPUT_SHAPE: ~
+
+# model configs
+CONFIG:
+  POSENET: "modules/SelfPose3d/config/cam4_posenet.yaml"
+
+CAMERA:
+  SOURCES: "modules/SelfPose3d/data0705/hdVideo"
+  START_FRAME: 146
+  END_FRAME: NULL
+  MAX_CAMERAS: 100
+
+# lod
+DISTANCE: 1500
+
+# kafka
+KAFKA:
+  SERVER: "localhost:9092"
+  # camera
+  CAMERA:
+    ENABLED: False
+    GROUP_ID: "main"
+    TOPICS: ~
+  # analytics
+  ANALYTICS:
+    ENABLED: False
+    GROUP_ID:
+      MAIN: "main"
+      SUB: "sub"
+    TOPIC:
+      REQUEST: "request"
+      RESPONSE: "response"
+  # visualization
+  VISUALIZATION:
+    ENABLED: False
+    GROUP_ID: "aisl_sim"
+    TOPIC: "person_info"
+  # control
+  CONTROL:
+    ENABLED: False
+    GROUP_ID: "control"
+    TOPIC: "control"

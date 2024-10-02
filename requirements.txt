@@ -1,0 +1,9 @@
+tqdm
+gdown
+torch==1.9.0
+torchvision==0.10.0a0+300a8a4
+tensorrt==10.1.0
+opencv-contrib-python-headless
+numpy
+matplotlib
+easydict
